@@ -1,0 +1,18 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Card Number</th>
+        <th>Expiry Date</th>
+        <th>CVV</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let list of service.paymentList">
+        <td>{{list.CardOwnerName}}</td>
+        <td>{{list.CardNumber}}</td>
+        <td>{{list.ExpirationDate}}</td>
+        <td>{{list.CVV}}</td>
+      </tr>
+    </tbody>
+  </table>
