@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PaymentDetailComponent implements OnInit {
 
-  constructor(private service:PaymentDetailService,private toast : ToastrService) { }
+  constructor(public service:PaymentDetailService,public toast : ToastrService) { }
 
   ngOnInit() {
     this.resetform();
@@ -32,16 +32,31 @@ export class PaymentDetailComponent implements OnInit {
   }
 
     onSubmit(form:NgForm){
-      this.service.postPaymentDetails(form.value).subscribe(
-        success => {
-          this.toast.success('Payment Details Saved Successfully');
-          this.resetform(form);
-          this.service.refreshList();
-        },
-        error => {
-          console.log('Error Occured');
-        }
-      );
+      if(form.value.PMId != null)
+      {
+        this.service.updatePaymentDetails(form.value).subscribe(
+          success => {
+            this.toast.success('Payment Details Updated Successfully');
+            this.resetform(form);
+            this.service.refreshList();
+          },
+          error => {
+            console.log('Error Occured');
+          }
+        );
+      }
+      else {
+        this.service.postPaymentDetails(form.value).subscribe(
+          success => {
+            this.toast.success('Payment Details Saved Successfully');
+            this.resetform(form);
+            this.service.refreshList();
+          },
+          error => {
+            console.log('Error Occured');
+          }
+        );
+      }
 
 
     }

@@ -8,11 +8,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor = "let list of service.paymentList">
-        <td>{{list.CardOwnerName}}</td>
-        <td>{{list.CardNumber}}</td>
-        <td>{{list.ExpirationDate}}</td>
-        <td>{{list.CVV}}</td>
+      <tr *ngFor = "let list of service.paymentList; let i = index">
+        <td (click)="populateForm(list)" data-editable="true">{{list.CardOwnerName}}</td>
+        <td (click)="populateForm(list)">{{list.CardNumber}}</td>
+        <td (click)="populateForm(list)">{{list.ExpirationDate}}</td>
+        <td (click)="populateForm(list)">{{list.CVV}}</td>
+        <td><button class="btn btn-danger" (click)="onDelete(list.PMId)" type="submit">Delete</button></td>
+        <td><button *ngIf="enableEdit" class="btn btn-primary" (click)="populateForm(list)" type="submit">Edit</button></td>
       </tr>
     </tbody>
   </table>

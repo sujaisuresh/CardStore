@@ -11,22 +11,26 @@ import { PaymentDetailService } from './shared/payment-detail.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { ToastrModule } from 'ngx-toastr';
+import { AppRoutingModule} from './/app-routing.module';
+import { EditPaymentComponent } from './edit-payment/edit-payment.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     PaymentDetailsComponent,
     PaymentDetailComponent,
-    PaymentDetailListComponent
+    PaymentDetailListComponent,
+    EditPaymentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    AppRoutingModule
   ],
   providers: [PaymentDetailService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { } 
